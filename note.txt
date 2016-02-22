@@ -1,0 +1,17 @@
+git clone https://github.com/charmedlabs/pixy.git
+cd pixy/scripts
+./build_libpixyusb.sh
+sudo ./install_ibpixyusb.sh
+
+源程序和CMakeLists.txt都在src/host文件夹下
+
+git clone https://github.com/vichargrave/tcpsockets.git 将tcpsockets程序拷贝下来
+将client部分的发送程序加入到raspberrypi读取相机数据帧的源程序中
+在CMakeLists.txt文件中加入
+add_library(tcp STATIC tcpconnector.cpp)
+target_link_libraries(hello_pixy tcp)
+进行编译，生成可执行程序
+
+在检测的同时，将需要的参数传递到pc端的processing软件上，进行显示
+
+
